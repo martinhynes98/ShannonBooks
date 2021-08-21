@@ -1,4 +1,4 @@
-package com.shannon.online;
+package com.shannon.online.entity.supplier;
 
 public class PrimeSupplier extends Supplier{
     protected int processSupplier(int orderId){

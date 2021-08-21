@@ -1,7 +1,7 @@
-package com.shannon.online;
+package com.shannon.online.factory;
 
 public class OrderFactoryProducer {
-    protected AbstractOrderFactory getOrderFactory(String orderType){
+    public AbstractOrderFactory getOrderFactory(String orderType){
         //Switch case allows for more order types to easily be added
         switch(orderType){
             case "prime":
