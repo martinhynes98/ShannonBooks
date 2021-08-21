@@ -7,8 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class OnlineApplication {
 
 	public static void main(String[] args) {
-		OrderFactoryProducer producer = new OrderFactoryProducer();
-		AbstractOrderFactory factory = producer.getOrderFactory("prime");
 		SpringApplication.run(OnlineApplication.class, args);
 	}
 
