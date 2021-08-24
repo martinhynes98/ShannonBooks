@@ -7,14 +7,26 @@ import com.shannon.online.entity.shipping.StandardShipping;
 import com.shannon.online.entity.supplier.StandardSupplier;
 import com.shannon.online.entity.supplier.Supplier;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class StandardOrderFactory implements AbstractOrderFactory {
+
+    @Autowired
+    private StandardOrder order;
+    @Autowired
+    private StandardSupplier supplier;
+    @Autowired
+    private StandardShipping shipping;
+
     public Order createOrder(){
-        return new StandardOrder();
+        return order;
     }
     public Supplier createSupplier(){
-        return new StandardSupplier();
+        return supplier;
     }
     public Shipping createShipping(){
-        return new StandardShipping();
+        return shipping;
     }
 }

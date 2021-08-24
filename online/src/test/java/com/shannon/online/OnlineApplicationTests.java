@@ -22,6 +22,7 @@ import com.shannon.online.entity.supplier.SixHourSupplier;
 import com.shannon.online.entity.supplier.StandardSupplier;
 import com.shannon.online.entity.supplier.Supplier;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
@@ -31,11 +32,12 @@ class OnlineApplicationTests {
 	//void setUp(){
 	//	OrderFactoryProducer producer = new OrderFactoryProducer();
 	//}
+	@Autowired
+	OrderFactoryProducer producer;
 
 	@Test
 	@DisplayName("Ensure Factory Producer Returns Standard Factory")
 	void produceStandardFactory() {
-		OrderFactoryProducer producer = new OrderFactoryProducer();
 		AbstractOrderFactory factory = producer.getOrderFactory("");
 		assertTrue(factory instanceof AbstractOrderFactory);
 		assertTrue(factory instanceof StandardOrderFactory);
@@ -44,7 +46,6 @@ class OnlineApplicationTests {
 	@Test
 	@DisplayName("Ensure Factory Producer Returns Prime Factory")
 	void producePrimeFactory() {
-		OrderFactoryProducer producer = new OrderFactoryProducer();
 		AbstractOrderFactory factory = producer.getOrderFactory("prime");
 		assertTrue(factory instanceof AbstractOrderFactory);
 		assertTrue(factory instanceof PrimeOrderFactory);
@@ -53,7 +54,6 @@ class OnlineApplicationTests {
 	@Test
 	@DisplayName("Ensure Factory Producer Returns Six Hour Factory")
 	void produceSixHourFactory() {
-		OrderFactoryProducer producer = new OrderFactoryProducer();
 		AbstractOrderFactory factory = producer.getOrderFactory("sixhour");
 		assertTrue(factory instanceof AbstractOrderFactory);
 		assertTrue(factory instanceof SixHourOrderFactory);
@@ -62,7 +62,7 @@ class OnlineApplicationTests {
 	@Test
 	@DisplayName("Ensure Standard Order Factory Creates Standard Order, Supplier, and Shipping")
 	void standardFactoryTest() {
-		AbstractOrderFactory factory = new StandardOrderFactory();
+		AbstractOrderFactory factory = producer.getOrderFactory("");
 		Order order = factory.createOrder();
 		assertTrue(order instanceof Order);
 		assertTrue(order instanceof StandardOrder);
@@ -77,7 +77,7 @@ class OnlineApplicationTests {
 	@Test
 	@DisplayName("Ensure Prime Order Factory Creates Standard Order, Supplier, and Shipping")
 	void primeFactoryTest() {
-		AbstractOrderFactory factory = new PrimeOrderFactory();
+		AbstractOrderFactory factory = producer.getOrderFactory("prime");
 		Order order = factory.createOrder();
 		assertTrue(order instanceof Order);
 		assertTrue(order instanceof PrimeOrder);
@@ -92,7 +92,7 @@ class OnlineApplicationTests {
 	@Test
 	@DisplayName("Ensure Six Hour Order Factory Creates Standard Order, Supplier, and Shipping")
 	void sixHourFactoryTest() {
-		AbstractOrderFactory factory = new SixHourOrderFactory();
+		AbstractOrderFactory factory = producer.getOrderFactory("sixhour");
 		Order order = factory.createOrder();
 		assertTrue(order instanceof Order);
 		assertTrue(order instanceof SixHourOrder);

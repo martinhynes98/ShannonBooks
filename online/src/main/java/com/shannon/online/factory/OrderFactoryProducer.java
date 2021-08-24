@@ -1,15 +1,26 @@
 package com.shannon.online.factory;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class OrderFactoryProducer {
+
+    @Autowired
+    PrimeOrderFactory prime;
+    @Autowired
+    StandardOrderFactory standard;
+    @Autowired
+    SixHourOrderFactory sixHour;
     public AbstractOrderFactory getOrderFactory(String orderType){
         //Switch case allows for more order types to easily be added
         switch(orderType){
             case "prime":
-                return new PrimeOrderFactory();
+                return prime;
             case "sixhour":
-                return new SixHourOrderFactory();
+                return sixHour;
         }
         //Standard order is the default case
-        return new StandardOrderFactory();
+        return standard;
     }
 }

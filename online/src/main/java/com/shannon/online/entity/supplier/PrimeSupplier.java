@@ -1,7 +1,10 @@
 package com.shannon.online.entity.supplier;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class PrimeSupplier extends Supplier{
-    protected int processSupplier(int orderId){
+    public int processSupplier(int orderId){
         return 0;
     }
 }
