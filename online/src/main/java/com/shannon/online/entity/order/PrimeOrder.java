@@ -1,7 +1,10 @@
 package com.shannon.online.entity.order;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class PrimeOrder extends Order{
-    protected int processOrder(int customerId, int productId){
+    public int processOrder(int customerId, int productId){
         return 0;
     }
 }

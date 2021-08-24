@@ -1,7 +1,10 @@
 package com.shannon.online.entity.shipping;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class StandardShipping extends Shipping{
-    protected int processShipping(int supplierId){
+    public int processShipping(int supplierId){
         return 0;
     }
 }

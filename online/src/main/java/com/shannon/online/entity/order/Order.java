@@ -1,5 +1,8 @@
 package com.shannon.online.entity.order;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public abstract class Order {
-    protected abstract int processOrder(int customerId, int productId);
+    public abstract int processOrder(int customerId, int productId);
 }
