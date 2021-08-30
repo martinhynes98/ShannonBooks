@@ -1,10 +1,27 @@
 package com.shannon.online.entity.order;
 
+import com.shannon.online.data.order.OrderData;
+import com.shannon.online.data.order.PrimeOrderData;
+import com.shannon.online.data.order.PrimeOrderRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class PrimeOrder extends Order{
-    public int processOrder(int customerId, int productId){
-        return 0;
+
+    @Autowired
+    PrimeOrderRepository primeOrderRepository;
+    
+    @Override
+    public OrderData createOrder(int customerId, int productId){
+        OrderData orderData = primeOrderRepository.save(new PrimeOrderData(customerId, productId));
+        return orderData;
+    }
+
+    @Override
+    public OrderData getOrder(int orderId){
+        OrderData orderData = primeOrderRepository.findById(orderId).get();
+        return orderData;
     }
 }
