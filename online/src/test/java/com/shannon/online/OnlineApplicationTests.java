@@ -27,8 +27,10 @@ import com.shannon.online.entity.supplier.Supplier;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
+@ActiveProfiles("test")
 class OnlineApplicationTests {
 
 	//@BeforeEach
@@ -106,6 +108,17 @@ class OnlineApplicationTests {
 		assertTrue(shipping instanceof Shipping);
 		assertTrue(shipping instanceof SixHourShipping);
 	}
+}
+
+@SpringBootTest
+class SQLiteTests {
+	
+		//@BeforeEach
+		//void setUp(){
+		//	OrderFactoryProducer producer = new OrderFactoryProducer();
+		//}
+	@Autowired
+	OrderFactoryProducer producer;
 
 	@Test
 	void createStandardOrder(){
@@ -178,6 +191,8 @@ class OnlineApplicationTests {
 		SupplierData importedData = primeSupplier.getSupplier(createdData.getId());
 		assertTrue(createdData.getId().equals(importedData.getId()));
 	}
+
+
 
 	@Test
 	void createSixHourSupplier(){
