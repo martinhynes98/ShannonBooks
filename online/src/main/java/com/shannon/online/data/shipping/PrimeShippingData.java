@@ -7,7 +7,7 @@ import javax.persistence.Table;
 @Table(name="prime_shipping")
 public class PrimeShippingData extends ShippingData {
     
-    protected PrimeShippingData() {}
+    public PrimeShippingData() {}
 
     public PrimeShippingData(Integer supplierId){
         super(supplierId);

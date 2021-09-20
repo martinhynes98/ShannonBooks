@@ -7,6 +7,9 @@ import com.shannon.online.data.order.SixHourOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.ArrayList;
+
 @Component
 public class SixHourOrder extends Order{
 
@@ -22,6 +25,14 @@ public class SixHourOrder extends Order{
     @Override
     public OrderData getOrder(int orderId){
         OrderData orderData = sixHourOrderRepository.findById(orderId).get();
+        return orderData;
+    }
+
+    @Override
+    public List<OrderData> getOrders(){
+        Iterable<SixHourOrderData> orders = sixHourOrderRepository.findAll();
+        List<OrderData> orderData = new ArrayList<OrderData>();
+        orders.forEach(orderData::add);
         return orderData;
     }
 }

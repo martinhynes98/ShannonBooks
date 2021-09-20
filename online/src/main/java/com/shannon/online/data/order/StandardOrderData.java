@@ -7,7 +7,7 @@ import javax.persistence.Table;
 @Table(name="standard_orders")
 public class StandardOrderData extends OrderData {
     
-    protected StandardOrderData() {}
+    public StandardOrderData() {}
 
     public StandardOrderData(Integer customerId, Integer productId){
         super(customerId, productId);

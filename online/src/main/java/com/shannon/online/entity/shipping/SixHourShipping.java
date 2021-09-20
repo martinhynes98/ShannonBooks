@@ -7,6 +7,9 @@ import com.shannon.online.data.shipping.SixHourShippingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.ArrayList;
+
 @Component
 public class SixHourShipping extends Shipping{
 
@@ -22,6 +25,14 @@ public class SixHourShipping extends Shipping{
     @Override
     public ShippingData getShipping(int shippingId){
         ShippingData shippingData = sixHourShippingRepository.findById(shippingId).get();
+        return shippingData;
+    }
+
+    @Override
+    public List<ShippingData> getShippings(){
+        Iterable<SixHourShippingData> shipping = sixHourShippingRepository.findAll();
+        List<ShippingData> shippingData = new ArrayList<ShippingData>();
+        shipping.forEach(shippingData::add);
         return shippingData;
     }
 }
