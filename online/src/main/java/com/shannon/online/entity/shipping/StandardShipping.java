@@ -7,6 +7,8 @@ import com.shannon.online.data.shipping.StandardShippingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class StandardShipping extends Shipping{
 
@@ -22,6 +24,12 @@ public class StandardShipping extends Shipping{
     @Override
     public ShippingData getShipping(int shippingId){
         ShippingData shippingData = standardShippingRepository.findById(shippingId).get();
+        return shippingData;
+    }
+
+    @Override
+    public List<ShippingData> getShippings(){
+        List<ShippingData> shippingData = (List<ShippingData>) (List<? extends ShippingData>)standardShippingRepository.findAll();
         return shippingData;
     }
 }

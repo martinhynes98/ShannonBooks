@@ -17,7 +17,7 @@ public abstract class OrderData {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    protected OrderData() {}
+    public OrderData() {}
 
     public OrderData(Integer customerId, Integer productId){
         this.customerId = customerId;

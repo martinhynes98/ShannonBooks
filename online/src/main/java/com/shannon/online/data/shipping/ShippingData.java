@@ -15,7 +15,7 @@ public abstract class ShippingData {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    protected ShippingData() {}
+    public ShippingData() {}
 
     public ShippingData(Integer supplierId){
         this.supplierId = supplierId;

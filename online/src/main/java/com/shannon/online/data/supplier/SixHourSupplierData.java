@@ -7,7 +7,7 @@ import javax.persistence.Table;
 @Table(name="sixhour_supplier")
 public class SixHourSupplierData extends SupplierData {
     
-    protected SixHourSupplierData() {}
+    public SixHourSupplierData() {}
 
     public SixHourSupplierData(Integer orderId){
         super(orderId);

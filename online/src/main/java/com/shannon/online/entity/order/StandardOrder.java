@@ -7,6 +7,8 @@ import com.shannon.online.data.order.StandardOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class StandardOrder extends Order{
 
@@ -22,6 +24,12 @@ public class StandardOrder extends Order{
     @Override
     public OrderData getOrder(int orderId){
         OrderData orderData = standardOrderRepository.findById(orderId).get();
+        return orderData;
+    }
+
+    @Override
+    public List<OrderData> getOrders(){
+        List<OrderData> orderData = (List<OrderData>) (List<? extends OrderData>)standardOrderRepository.findAll();
         return orderData;
     }
 

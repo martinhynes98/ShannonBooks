@@ -15,7 +15,7 @@ public abstract class SupplierData {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    protected SupplierData() {}
+    public SupplierData() {}
 
     public SupplierData(Integer orderId){
         this.orderId = orderId;

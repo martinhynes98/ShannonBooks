@@ -7,6 +7,8 @@ import com.shannon.online.data.supplier.SupplierData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class StandardSupplier extends Supplier{
 
@@ -22,6 +24,12 @@ public class StandardSupplier extends Supplier{
     @Override
     public SupplierData getSupplier(int supplierId){
         SupplierData supplierData = standardSupplierRepository.findById(supplierId).get();
+        return supplierData;
+    }
+
+    @Override
+    public List<SupplierData> getSuppliers(){
+        List<SupplierData> supplierData = (List<SupplierData>) (List<? extends SupplierData>)standardSupplierRepository.findAll();
         return supplierData;
     }
 }
