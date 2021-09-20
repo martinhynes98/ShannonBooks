@@ -23,6 +23,7 @@ public class SwaggerConfig {
 				.apiInfo(apiInfo()).select().paths(postPaths()).build();
 	}
 
+	@SuppressWarnings("unchecked")
 	private Predicate<String> postPaths() {
 		return or(regex("/v1/orders.*"));
 	}

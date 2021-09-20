@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.ArrayList;
 
 @Component
 public class PrimeOrder extends Order{
@@ -29,7 +30,14 @@ public class PrimeOrder extends Order{
 
     @Override
     public List<OrderData> getOrders(){
-        List<OrderData> orderData = (List<OrderData>) (List<? extends OrderData>)primeOrderRepository.findAll();
+        Iterable<PrimeOrderData> orders = primeOrderRepository.findAll();
+        List<OrderData> orderData = new ArrayList<OrderData>();
+        orders.forEach(orderData::add);
         return orderData;
     }
+    // @Override
+    // public List<OrderData> getOrders(){
+    //     List<OrderData> orderData = (List<OrderData>) (List<? extends OrderData>)primeOrderRepository.findAll();
+    //     return orderData;
+    // }
 }

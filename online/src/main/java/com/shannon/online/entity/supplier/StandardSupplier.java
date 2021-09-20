@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.ArrayList;
 
 @Component
 public class StandardSupplier extends Supplier{
@@ -29,7 +30,9 @@ public class StandardSupplier extends Supplier{
 
     @Override
     public List<SupplierData> getSuppliers(){
-        List<SupplierData> supplierData = (List<SupplierData>) (List<? extends SupplierData>)standardSupplierRepository.findAll();
+        Iterable<StandardSupplierData> supplier = standardSupplierRepository.findAll();
+        List<SupplierData> supplierData = new ArrayList<SupplierData>();
+        supplier.forEach(supplierData::add);
         return supplierData;
     }
 }

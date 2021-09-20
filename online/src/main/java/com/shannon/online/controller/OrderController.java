@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 
 import com.shannon.online.data.order.OrderData;
 import com.shannon.online.data.order.PrimeOrderData;
-import com.shannon.online.data.shipping.ShippingData;
+//import com.shannon.online.data.shipping.ShippingData;
 import com.shannon.online.data.supplier.SupplierData;
 import com.shannon.online.entity.order.Order;
 import com.shannon.online.entity.shipping.Shipping;
@@ -67,7 +67,7 @@ public class OrderController {
         Shipping shipping = orderFactory.createShipping();
         OrderData orderData = order.createOrder(Integer.parseInt(body.get("customerId").toString()), Integer.parseInt(body.get("productId").toString()));
         SupplierData supplierData = supplier.createSupplier(orderData.getId());
-        ShippingData shippingData = shipping.createShipping(supplierData.getId());
+        shipping.createShipping(supplierData.getId());
 
         return new ResponseEntity<OrderData>(orderData, HttpStatus.CREATED);
     }

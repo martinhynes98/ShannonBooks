@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.ArrayList;
 
 @Component
 public class SixHourShipping extends Shipping{
@@ -29,7 +30,9 @@ public class SixHourShipping extends Shipping{
 
     @Override
     public List<ShippingData> getShippings(){
-        List<ShippingData> shippingData = (List<ShippingData>) (List<? extends ShippingData>)sixHourShippingRepository.findAll();
+        Iterable<SixHourShippingData> shipping = sixHourShippingRepository.findAll();
+        List<ShippingData> shippingData = new ArrayList<ShippingData>();
+        shipping.forEach(shippingData::add);
         return shippingData;
     }
 }
