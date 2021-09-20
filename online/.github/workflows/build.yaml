@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - main
-      - otherbranch
+      - CI/CD
 jobs:
   tests:
     name: Unit tests
